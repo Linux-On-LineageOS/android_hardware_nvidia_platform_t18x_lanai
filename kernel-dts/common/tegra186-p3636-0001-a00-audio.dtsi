@@ -22,6 +22,27 @@
 #include <audio/tegra186-audio-dai-links.dtsi>
 
 / {
+#if TEGRA_AUDIO_BUS_DT_VERSION >= DT_VERSION_2
+	aconnect@2a41000 {
+#endif
+	ahub {
+		admaif@290f000 {
+			dma-buffer-size = <32768>, <32768>, <32768>, <32768>,
+						<32768>, <32768>, <32768>, <32768>,
+						<32768>, <32768>, <32768>, <32768>,
+						<32768>, <32768>, <32768>, <32768>,
+						<32768>, <32768>, <32768>, <32768>,
+						<32768>, <32768>, <32768>, <32768>,
+						<32768>, <32768>, <32768>, <32768>,
+						<32768>, <32768>, <32768>, <32768>,
+						<32768>, <32768>, <32768>, <32768>,
+						<32768>, <32768>, <32768>, <32768>;
+		};
+	};
+#if TEGRA_AUDIO_BUS_DT_VERSION >= DT_VERSION_2
+	};
+#endif
+
 	hda@3510000 {
 		status = "okay";
 	};
@@ -34,12 +55,8 @@
 			 <&tegra_car TEGRA186_CLK_PLL_A_OUT0>,
 			 <&tegra_car TEGRA186_CLK_AUD_MCLK>;
 		clock-names = "pll_a", "pll_a_out0", "extern1";
-		assigned-clocks = <&tegra_car TEGRA186_CLK_PLL_A_OUT0>,
-				  <&tegra_car TEGRA186_CLK_AUD_MCLK>;
-		assigned-clock-parents = <&tegra_car TEGRA186_CLK_PLLA>,
-					 <&tegra_car TEGRA186_CLK_PLL_A_OUT0>;
-		resets = <&tegra_car TEGRA186_RESET_AUD_MCLK>;
-		reset-names = "extern1_rst";
+		assigned-clocks = <&tegra_car TEGRA186_CLK_AUD_MCLK>;
+		assigned-clock-parents = <&tegra_car TEGRA186_CLK_PLL_A_OUT0>;
 
 		nvidia-audio-card,mclk-fs = <256>;
 
