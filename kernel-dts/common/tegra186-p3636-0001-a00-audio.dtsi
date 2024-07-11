@@ -43,8 +43,9 @@
 
 		nvidia-audio-card,mclk-fs = <256>;
 
-		hdr40_i2c1: i2c@c240000 { };
 	};
+
+	hdr40_i2c1: i2c@c240000 { };
 };
 
 hdr40_snd_link_i2s: &i2s1_to_codec { };
