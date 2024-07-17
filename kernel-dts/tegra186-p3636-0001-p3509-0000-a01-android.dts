@@ -23,6 +23,12 @@
 		clock-names = "cec";
 	};
 
+	aconnect@2a41000 {
+		adsp_audio {
+			status = "disabled";
+		};
+	};
+
 	sdhci@3440000 {
 		status = "disabled";
 	};
